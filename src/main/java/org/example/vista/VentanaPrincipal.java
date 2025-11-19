@@ -43,7 +43,7 @@ public class VentanaPrincipal extends JFrame {
 
         panelCentro.add(new JLabel("Algoritmo:"));
         comboAlgoritmo = new JComboBox<String>(
-                new String[]{"Round Robin", "Otro algoritmo (no implementado)"}
+                new String[]{"Round Robin", "Prioridad (no expropiativo)"}
         );
         panelCentro.add(comboAlgoritmo);
 

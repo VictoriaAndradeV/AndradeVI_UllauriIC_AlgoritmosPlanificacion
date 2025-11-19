@@ -52,6 +52,11 @@ public class PlanificadorModelo {
         AlgoritmoRR rr = new AlgoritmoRR();
         return rr.ejecutar(procesos, quantum);
     }
+    public ResultadoRR ejecutarPrioridad() {
+        AlgoritmoPrioridad prioridad = new AlgoritmoPrioridad();
+        return prioridad.ejecutar(procesos);
+    }
+
 
     public void limpiar() {
         procesos.clear();

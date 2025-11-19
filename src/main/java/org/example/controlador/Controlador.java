@@ -138,15 +138,22 @@ public class Controlador implements ActionListener {
         }
 
         String algoritmo = vista.getAlgoritmoSeleccionado();
-        if (!"Round Robin".equals(algoritmo)) {
-            vista.mostrarMensaje("Por ahora solo se puede graficar Round Robin.");
+        ResultadoRR resultado = null;
+
+        if ("Round Robin".equals(algoritmo)) {
+            resultado = modelo.ejecutarRoundRobin();
+        } else if ("Prioridad (no expropiativo)".equals(algoritmo)) {
+            resultado = modelo.ejecutarPrioridad();
+        } else {
+            vista.mostrarMensaje("Algoritmo no implementado.");
             return;
         }
 
-        ResultadoRR resultado = modelo.ejecutarRoundRobin();
         VentanaGG ventanaGantt = new VentanaGG(resultado);
+        ventanaGantt.setTitle("Diagrama de Gantt - " + algoritmo);
         ventanaGantt.setVisible(true);
     }
+
 
     private void manejarMostrarResultados() {
         if (!modelo.estaCompleto()) {
@@ -155,15 +162,22 @@ public class Controlador implements ActionListener {
         }
 
         String algoritmo = vista.getAlgoritmoSeleccionado();
-        if (!"Round Robin".equals(algoritmo)) {
-            vista.mostrarMensaje("Por ahora solo se pueden mostrar resultados de Round Robin.");
+        ResultadoRR resultado = null;
+
+        if ("Round Robin".equals(algoritmo)) {
+            resultado = modelo.ejecutarRoundRobin();
+        } else if ("Prioridad (no expropiativo)".equals(algoritmo)) {
+            resultado = modelo.ejecutarPrioridad();
+        } else {
+            vista.mostrarMensaje("Algoritmo no implementado.");
             return;
         }
 
-        ResultadoRR resultado = modelo.ejecutarRoundRobin();
         VentanaResultado ventanaResultados = new VentanaResultado(resultado);
+        ventanaResultados.setTitle("Resultados - " + algoritmo);
         ventanaResultados.setVisible(true);
     }
+
 
     private void manejarLimpiar() {
         modelo.limpiar();
